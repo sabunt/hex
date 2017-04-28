@@ -1,0 +1,10 @@
+h1 Календарь
+#calendar
+
+  h2#month
+    = link_to '<', date:  @date.prev_month 
+    = Russian::strftime(@date, "%B")
+    = link_to '>', date: @date.next_month
+  h2 Сегодня #{Russian::strftime(Date.today, "%d %B %Y")}
+  = calendar @date do |date|
+   = date.day
