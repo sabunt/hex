@@ -1,0 +1,35 @@
+version: '2'
+services:
+  postgres:
+    environment:
+      - POSTGRES_PASSWORD=docker
+    image: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        secret_token: sometoken
+    environment:
+      - RAILS_LOG_TO_STDOUT=true
+      - RAILS_ENV=development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres:
+  redis:
