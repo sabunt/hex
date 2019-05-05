@@ -47,3 +47,7 @@ puts c = '9'
 - Листание месяца вперед назад
 
 В репозитории решение.
+
+
+
+Запуск docker build -t hex_app:v1 . --build-arg secret_token=kakoitotoken
