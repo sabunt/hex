@@ -1,0 +1,9 @@
+db ansible_ssh_host=localhost ansible_ssh_port=2222 ansible_ssh_user=vagrant
+
+docker ansible_ssh_hgitost=localhost ansible_ssh_port=2221 ansible_ssh_user=vagrant
+
+[production]
+docker
+
+[dbservers]
+db
