@@ -1,11 +1,13 @@
 FROM ruby:2.6.3-alpine
 
 ARG secret_token
+ARG db_host
 
 ENV RACK_ENV=production
 ENV RAILS_ENV=production
 ENV APP_HOME=/app
 ENV SECRET_KEY_BASE=$secret_token
+ENV DB_HOST=$db_host
 ENV HEX_APP_DATABASE_PASSWORD=docker
 
 WORKDIR $APP_HOME
@@ -28,4 +30,4 @@ RUN gem install bundler && \
 
 EXPOSE 3000
 
-CMD rm -f /app/tmp/pids/server.pid && rails db:create db:migrate && rails server -b 0.0.0.0
+CMD rm -f /app/tmp/pids/server.pid && rails db:migrate && rails server -b 0.0.0.0

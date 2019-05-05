@@ -1,0 +1,7 @@
+---
+project_name: hex_app
+db_name: hex_app_production
+db_user: docker_user
+db_password: docker
+secret_token: sometoken
+db_host: hostvars['db'][ansible_eth1]['ipv4']['address']

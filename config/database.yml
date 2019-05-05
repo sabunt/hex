@@ -5,7 +5,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
-  user: postgres
+  user: docker_user
 
 development:
   <<: *default
@@ -17,6 +17,8 @@ test:
 
 production:
   <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  port: 8081
   database: hex_app_production
   username: postgres
   password: <%= ENV['HEX_APP_DATABASE_PASSWORD'] %>
