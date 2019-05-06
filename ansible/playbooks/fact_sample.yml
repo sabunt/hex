@@ -1,0 +1,9 @@
+---
+
+- hosts: dbservers
+  tasks:
+    - debug: var=hostvars["db"]["ansible_eth1"]["ipv4"]["address"]
+
+- hosts: apps
+  tasks:
+    - debug: var=hostvars["db"]["ansible_eth1"]["ipv4"]["address"]

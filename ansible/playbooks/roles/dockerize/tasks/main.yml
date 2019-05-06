@@ -1,0 +1,10 @@
+- name: build the image
+  command: docker build -t hex_app:v1 . --build-arg secret_token={{ secret_token }} --build-arg db_host={{ db_host }}
+
+- name: run the site in a docker container
+  docker:
+    name: hex_app_v1
+    image: "hex_app:v1"
+    state: reloaded
+    publish_all_ports: yes
+    use_tls: encrypt
